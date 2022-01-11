@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SkeletonComponent } from '@layout/skeleton/skeleton.component';
 
 const routes: Routes = [
-  {path: '', component: SkeletonComponent}
+  {path: '', loadChildren:() => import('./core/core.module').then(m =>m.CoreModule)},
+  {path: 'b', loadChildren:() => import('./data/data.module').then(m =>m.DataModule)},
 ];
 
 @NgModule({

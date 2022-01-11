@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkeletonComponent implements OnInit {
 
-  constructor() { }
+  public fecha = new Date().getTime()
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
   }

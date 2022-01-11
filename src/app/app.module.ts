@@ -1,20 +1,20 @@
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { LocationStrategy, PathLocationStrategy,registerLocaleData } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { SkeletonComponent } from './layout/skeleton/skeleton.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { NavigationComponent } from './layout/navigation/navigation.component';
+
+import localeEs from '@angular/common/locales/es'
+import { AuthGuard } from '@data/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { TokenInterceptor } from './data/token.interceptor'
+registerLocaleData(localeEs, 'es')
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SkeletonComponent,
-    FooterComponent,
-    NavigationComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,10 +22,20 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
     CoreModule
   ],
   providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
-    }
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'es'
+    },
   ],
   bootstrap: [AppComponent]
 })
