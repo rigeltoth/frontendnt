@@ -1,43 +1,58 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-aos="fade-down">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark zindex" data-aos="fade-down">
     <div class="container-lg">
-      <a class="navbar-brand" href="#">Noti<span class="text-danger">Red</span> </a>
+      <a class="navbar-brand" routerLink="/">Noti<span class="text-danger">Red</span> </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="b/articles">Inicio</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Contenido
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Tecnología</a></li>
-              <li><a class="dropdown-item" href="#">Economía</a></li>
-              <li><a class="dropdown-item" href="#">Deportes</a></li>
-              <li><a class="dropdown-item" href="#">Opinión</a></li>
-              <li><a class="dropdown-item" href="#">Cultura</a></li>
-              <li><a class="dropdown-item" href="#">Ciencia</a></li>
-              <li><a class="dropdown-item" href="#">Política</a></li>
-              <li><a class="dropdown-item" href="#">Salud</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Más</a></li>
-            </ul>
+            <a class="nav-link active" aria-current="page" routerLink="">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-outline-danger " routerLink="b/signup">Suscríbete $900 1ER MES</a>
+            <a class="nav-link active" aria-current="page" routerLink="b/articles">Artículos</a>
           </li>
+          <ng-container *ngIf="!authService.loggedin()">
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-danger " routerLink="b/signup">Suscríbete $900 1ER MES</a>
+            </li>
+          </ng-container>
+          <ng-template #favorites></ng-template>
         </ul>
         <ul class="navbar-nav">
-          <form class="d-flex me-4">
-            <input class="form-control me-2" type="search" placeholder="Buscar noticias" aria-label="Search">
-            <button class="btn btn-outline-danger" type="submit">Buscar</button>
-          </form>
-          <li class="nav-item">
-            <a class="active btn btn-outline-success" aria-current="page" routerLink="b/signin">Iniciar sección</a>
-          </li>
+          <ng-container *ngIf="!authService.loggedin(); else logout">
+            <li class="nav-item">
+
+              <a class="active btn btn-outline-success" aria-current="page" routerLink="b/signin">Iniciar sesión</a>
+            </li>
+          </ng-container>
+          <ng-template #logout>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img style="height: 2rem; border-radius: 2rem;" src="'../../../../../../assets/perfil.jpg" alt="">
+                {{username}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" routerLink="b/user">
+                  <i class="fas fa-portrait"></i> Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                  <i class="fas fa-chart-line"></i> Panel</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                  <i class="fas fa-heart"></i> Favoritos</a></li>
+                <li>
+                  <a class="dropdown-item" routerLink="b/articles" (click)="articleService.getArticles()">
+                  <i class="fas fa-file-alt"></i> Artículos</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" (click)="authService.logout()" routerLink="b/signin">
+                  <i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+              </ul>
+            </li>
+          </ng-template>
         </ul>
       </div>
     </div>

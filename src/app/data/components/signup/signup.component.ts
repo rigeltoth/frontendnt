@@ -27,6 +27,7 @@ export class SignupComponent implements OnInit {
     this.authService.signup(this.user).subscribe(
       res => {console.log(res)
       localStorage.setItem('token', res.token)
+      localStorage.setItem('username', res.username)
       this.router.navigate(['b/user'])},
       err => console.error(err)
     )
