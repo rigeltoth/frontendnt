@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class ArticlesService {
 
   url_aticles = 'http://localhost:4000/api/articles'
-  
+
   constructor(private http: HttpClient) { }
 
   getArticles(){
@@ -17,6 +17,7 @@ export class ArticlesService {
   }
 
   createArticle(formArticle: NgForm){
+    console.log(formArticle)
     return this.http.post( this.url_aticles, formArticle)
   }
 }

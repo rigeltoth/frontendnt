@@ -4,7 +4,7 @@
         <div style="border-radius: 1rem; width: 15rem;" class="card text-center">
             <img style="border-radius: 9rem;" src="../../../../assets/perfil.jpg" class="card-img" alt="perfil">
             <div class="card-body text-info my-0">
-                @{{user}}
+                {{user}}
             </div>
             <div class="card-footer">
                 Artículos: 27 <br>
@@ -27,74 +27,21 @@
             <div class="mb-3">
                 <input class="form-control" [(ngModel)]="buffArticle.imgUrl" name="imgUrl" placeholder="imgurl">
             </div>
-            <div class="mb-3">
+            <div class="mb-3 d-none">
                 <input class="form-control" [(ngModel)]="buffArticle.author" name="author" placeholder="author">
-            </div>
-            <div class="mb-3">
-                <input class="form-control" [(ngModel)]="buffArticle.topic" name="topic" placeholder="topic">
             </div>
             <!-- <div class="mb-3">
                 <input   type="file" class="form-control" id="artImg">
                 <label for="artImg" class="form-label text-center">Agrega imágenes o videos</label>
-            </div> 
-            <div class="row m-2">
-                <div class="col">
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Tecnología
-                        </label>
-                    </div>
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Economía
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Deportes
-                        </label>
-                    </div>
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Opinión
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Cultura
-                        </label>
-                    </div>
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Ciencia
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Política
-                        </label>
-                    </div>
-                    <div class="form-check text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Salud
-                        </label>
-                    </div>
-                </div>
             </div> -->
+            <div class="row m-2 justify-content-end">
+              <div class="col-md-4 text-center">
+                <label> Tema del artículo</label>
+                <select class="form-select" [(ngModel)]="buffArticle.topic" name="topic">
+                  <option *ngFor="let topic of topics">{{topic}}</option>
+                </select>
+              </div>
+            </div>
             <div class="row justify-content-center mt-3">
                 <div class="col-2">
                     <button type="submit" class="btn btn-danger">Publicar</button>

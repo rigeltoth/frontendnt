@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class UserComponent implements OnInit {
 
   user: any
+  topics = ["Tecnología", "Economía", "Deportes", "Opinión", "Cultura", "Ciencia", "Política", "Salud"]
   articles: ArticleModel[] = []
   buffArticle: ArticleModel = {
     title: '',
@@ -29,29 +30,30 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.getUsername()
+    this.buffArticle.author = this.user
     this.getArticles()
   }
 
- /*  file(event: any){
-    const fetchedFile = event.target.files
-    this.files.push(fetchedFile)
-  } */
 
   getArticles(){
     this.articleService.getArticles().subscribe(
       res => {this.articles = res},
       err => console.error(err)
-    )
-  } 
+      )
+    }
 
   createArticle(formArticle: NgForm){
     this.articleService.createArticle(formArticle.value).subscribe(
       res => console.log(res),
       err => console.log(err)
-    )
-  }
+      )
+    }
 
-  /* extractbase64 =async ($event: any) => new Promise((resolve) => {
+    /*  file(event: any){
+         const fetchedFile = event.target.files
+         this.files.push(fetchedFile)
+        }
+    extractbase64 =async ($event: any) => new Promise((resolve) => {
     try {
       const unsaveImg = window.URL.createObjectURL($event)
       const image = this.sanitizer.bypassSecurityTrustUrl(unsaveImg)
