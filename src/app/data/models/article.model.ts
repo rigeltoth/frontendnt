@@ -1,4 +1,5 @@
 export interface ArticleModel {
+    _id: string,
     title: string,
     body: string,
     imgUrl: string,

@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="card my-5 bg-white">
+    <img src="{{articleSelected.imgUrl}}" class="card-img-top mx-auto mt-3 carder" alt="noticia">
+    <div class="card-body">
+      <div class="text-center text-info fs-4">
+        {{articleSelected.title}}
+      </div>
+      <div class="text-end me-3 fst-italic text-info ">
+        Por: {{articleSelected.author}}
+      </div>
+      <div class="text-black text-center">
+        {{articleSelected.body}}
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="badge bg-info text-wrap fs-6" style="width: 7rem;">{{articleSelected.topic}}</span>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
+import { MatIconModule } from '@angular/material/icon'
+
 
 @NgModule({
   declarations: [],
@@ -10,13 +12,15 @@ import { HttpClientModule } from '@angular/common/http'
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   exports:[
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }

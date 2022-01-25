@@ -1,4 +1,4 @@
-
+<div class="container-fluid">
 <div class="row my-5">
     <div class="col-md-4 my-4">
         <div style="border-radius: 1rem; width: 15rem;" class="card text-center">
@@ -60,26 +60,25 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row d-block ">
-        <div class="col-6 m-auto" *ngFor="let article of articles">
-            <ng-container *ngIf="article.author === user">
-                <div data-aos="zoom-in-up" class="card mt-2 bg-white">
-                    <div class="card-header text-center text-white bg-info">
-                        {{article.title}}
-                    </div>
-                    <img src="../../../../assets/news.jpg" class="card-img-top" alt="noticia">
-                    <div class="card-subtitle text-end me-3 fst-italic text-info">
-                        {{article.author}}
-                    </div>
-                    <div class="card-body text-black">
-                        {{article.body}}
-                    </div>
-                    <div class="card-footer">
-                        {{article.topic}} - {{article.comments}}
-                    </div>
-                </div>
-            </ng-container>
-        </div>
-    </div>
+  <div class="row d-block ">
+      <div class="col-6 m-auto" *ngFor="let article of articles">
+          <ng-container *ngIf="article.author === user">
+              <div data-aos="zoom-in-up" class="card mt-2 bg-white">
+                  <div class="card-header text-center text-white bg-info">
+                      {{article.title}}
+                  </div>
+                  <img src="../../../../assets/news.jpg" class="card-img-top" alt="noticia">
+                  <div class="card-subtitle text-end me-3 fst-italic text-info">
+                      {{article.author}}
+                  </div>
+                  <div class="card-body text-black">
+                      {{article.body}}
+                  </div>
+                  <div class="card-footer">
+                      {{article.topic}} - {{article.comments}}
+                  </div>
+              </div>
+          </ng-container>
+      </div>
+  </div>
 </div>

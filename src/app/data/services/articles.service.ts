@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ArticlesService {
 
+  articleId: string = ''
   url_aticles = 'http://localhost:4000/api/articles'
 
   constructor(private http: HttpClient) { }
@@ -17,7 +18,10 @@ export class ArticlesService {
   }
 
   createArticle(formArticle: NgForm){
-    console.log(formArticle)
-    return this.http.post( this.url_aticles, formArticle)
+    return this.http.post(this.url_aticles, formArticle)
+  }
+
+  getArticleById(){
+    return this.http.get<ArticleModel>(`${this.url_aticles}/${this.articleId}`)
   }
 }

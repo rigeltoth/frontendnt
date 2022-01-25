@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArticleModel } from '@data/models/article.model';
 import { ArticlesService } from '@data/services/articles.service';
 import * as AOS from 'aos'
 
 @Component({
   selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css']
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.css']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
 
   searchArt = ''
   articles: ArticleModel[] = []
   filteredArticles: ArticleModel[] = []
 
-  constructor(private articleService: ArticlesService) { }
+  constructor(
+    private articleService: ArticlesService,
+    private router: Router) { }
 
   ngOnInit(): void {
     AOS.init()
@@ -30,14 +33,17 @@ export class ArticlesComponent implements OnInit {
     )
   }
   searchArticle(){
-    this.filteredArticles = this.articles.filter(article => 
+    this.filteredArticles = this.articles.filter(article =>
       (article.title.toLowerCase().includes(this.searchArt.toLowerCase()) ||
       article.body.toLowerCase().includes(this.searchArt.toLowerCase())) ||
       article.topic.toLowerCase().includes(this.searchArt.toLowerCase()))
     }
   searchByTopic(topic: string){
-    console.log(topic)
-    this.filteredArticles = this.articles.filter(article => 
+    this.filteredArticles = this.articles.filter(article =>
       article.topic.includes(topic))
+  }
+  getArticleId(id: string){
+    this.articleService.articleId = id
+    this.router.navigate(['b/article'])
   }
 }

@@ -9,7 +9,8 @@ import { CoreModule } from './core/core.module';
 import localeEs from '@angular/common/locales/es'
 import { AuthGuard } from '@data/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { TokenInterceptor } from './data/token.interceptor'
+import { TokenInterceptor } from './data/token.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 registerLocaleData(localeEs, 'es')
 
 @NgModule({
@@ -19,7 +20,8 @@ registerLocaleData(localeEs, 'es')
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,

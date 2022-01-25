@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   topics = ["Tecnología", "Economía", "Deportes", "Opinión", "Cultura", "Ciencia", "Política", "Salud"]
   articles: ArticleModel[] = []
   buffArticle: ArticleModel = {
+    _id: '',
     title: '',
     body: '',
     imgUrl: '',
@@ -22,7 +23,6 @@ export class UserComponent implements OnInit {
     topic: '',
     author: ''
   }
-  /* files: any[] = [] */
   constructor(
     public authService: AuthService,
     public articleService: ArticlesService,
@@ -49,28 +49,5 @@ export class UserComponent implements OnInit {
       )
     }
 
-    /*  file(event: any){
-         const fetchedFile = event.target.files
-         this.files.push(fetchedFile)
-        }
-    extractbase64 =async ($event: any) => new Promise((resolve) => {
-    try {
-      const unsaveImg = window.URL.createObjectURL($event)
-      const image = this.sanitizer.bypassSecurityTrustUrl(unsaveImg)
-      const reader = new FileReader()
-      reader.readAsDataURL($event)
-      reader.onload = () => {
-        resolve({
-          base: reader.result,
-        })
-      }
-      reader.onerror = error => {
-        resolve({
-          base: null
-        })
-      }
-    } catch (e) {
-      return null
-    }
-  }) */
+
 }
